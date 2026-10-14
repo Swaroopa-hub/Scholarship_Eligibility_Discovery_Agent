@@ -1,10 +1,10 @@
 /* ============================================================
    ScholarAI frontend — vanilla JS SPA.
-   Talks to the FastAPI backend (default http://localhost:8000).
+   Talks to the FastAPI backend on the local app port.
    No build step required — open index.html or serve statically.
    ============================================================ */
 
-const API_BASE = window.SCHOLARAI_API_BASE || "http://localhost:8000";
+const API_BASE = window.SCHOLARAI_API_BASE || "http://localhost:8001";
 
 const state = {
   route: "landing",
@@ -760,7 +760,7 @@ async function ensureDiscoverData() {
     state.discoverData = data;
     state.discoverLoaded = true;
     if (!state.discoverSelected.length && state.result?.ranked_scholarships?.length) {
-      state.discoverSelected = state.result.ranked_scholarships.slice(0, 3).map((s) => s.scholarship_id);
+      state.discoverSelected = state.result.ranked_scholarships.slice(0, 5).map((s) => s.scholarship_id);
     }
   } catch (error) {
     state.discoverError = error.message;
@@ -960,7 +960,7 @@ function getDiscoverRecommendations() {
     };
   });
 
-  return recommendationList.sort((a, b) => b.score - a.score).slice(0, 8);
+  return recommendationList.sort((a, b) => b.score - a.score).slice(0, 55);
 }
 
 function renderDiscoverPage() {

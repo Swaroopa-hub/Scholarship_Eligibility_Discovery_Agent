@@ -64,7 +64,7 @@ class DiscoveryAgent:
     # ------------------------------------------------------------------
     # Public entry point used by the Orchestrator
     # ------------------------------------------------------------------
-    def run(self, profile: dict, top_k: int = 20, include_live_search: bool = True) -> list:
+    def run(self, profile: dict, top_k: int = 100, include_live_search: bool = True) -> list:
         candidates = coarse_filter(profile)
         if not candidates:
             candidates = load_all_scholarships()

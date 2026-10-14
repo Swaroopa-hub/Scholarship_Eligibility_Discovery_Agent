@@ -53,7 +53,7 @@ class Orchestrator:
         # follow-up questions prominently in the result.
 
         # 2. Discovery Agent
-        candidates = self.discovery_agent.run(profile_dict, top_k=25)
+        candidates = self.discovery_agent.run(profile_dict, top_k=100)
         report = self.discovery_agent.last_discovery_report
         discovery_msg = f"Retrieved {len(candidates)} candidate scholarships (RAG retrieval over local knowledge base)"
         if report:

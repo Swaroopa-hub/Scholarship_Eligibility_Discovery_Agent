@@ -37,7 +37,7 @@ def build_index(scholarships: list):
     return vectorizer, matrix
 
 
-def semantic_search(query: str, scholarships: list, top_k: int = 20) -> list:
+def semantic_search(query: str, scholarships: list, top_k: int = 100) -> list:
     """
     Returns scholarships ranked by TF-IDF cosine similarity to `query`,
     each annotated with a `_retrieval_score` for transparency.
