@@ -1,8 +1,4 @@
-# Scholarship_Eligibility_Discovery_Agent
-
-**ScholarAI — Personal Scholarship Discovery Agent**
-
-**PS-016 — Scholarship Eligibility Discovery Agent**
+**ScholarAI-Scholarship_Eligibility_Discovery_Agent**
 
 > "Don't search for scholarships. Let AI find the ones you're eligible for."
 
@@ -180,25 +176,6 @@ different host/port, set it before the page loads:
 ```
 (add this line in `index.html` above the `app.js` script tag)
 
-### Enabling the live Discovery pipeline (optional)
-
-By default the Discovery Agent only searches the 22-record local demo
-dataset. With Google credentials configured, it runs a full real-world
-discovery pipeline instead of a simple keyword lookup:
-
-**Setup (2 steps, same as before):**
-1. Create a Programmable Search Engine at
-   https://programmablesearchengine.google.com/ → turn on **"Search the
-   entire web"** → copy the **Search engine ID** (`cx`).
-2. Enable the Custom Search API and get an API key at
-   https://console.cloud.google.com/apis/library/customsearch.googleapis.com
-
-   ```
-   # backend/.env
-   GOOGLE_API_KEY=your_api_key_here
-   GOOGLE_CSE_ID=your_search_engine_id_here
-   ```
-
 **What the pipeline actually does** (`app/agents/discovery_agent.py`):
 
 1. **Multi-query search** — builds profile-aware queries (course, branch,
@@ -259,25 +236,6 @@ similarity, so the same scholarship phrased very differently across two
 listings (e.g. "NMMS" vs. "National Means-cum-Merit Scholarship") may
 not be merged automatically. A fuzzy-matching upgrade (e.g. token-set
 similarity) is a natural next step -- see "Future enhancements."
-
-### Enabling an LLM (optional)
-
-Not required — everything works with `LLM_PROVIDER=none`. To enable nicer
-free-text parsing / chat phrasing:
-
-```
-# .env
-LLM_PROVIDER=openai
-OPENAI_API_KEY=sk-...
-```
-or
-```
-LLM_PROVIDER=gemini
-GEMINI_API_KEY=...
-```
-Then uncomment the matching line in `requirements.txt` and `pip install` again.
-
----
 
 ## 6. Demo flow (exact hackathon script)
 
@@ -397,21 +355,15 @@ Student Profile page.
   and RAG retrieval runs on local TF-IDF vectors, the whole system runs and
   demos reliably without any internet dependency or paid API — while still
   supporting a pluggable LLM for nicer natural-language parsing/chat.
+<img width="611" height="290" alt="Screenshot 2026-10-14 141334" src="https://github.com/user-attachments/assets/df455392-7334-4094-9e43-b95467a212e3" />
+<img width="617" height="285" alt="Screenshot 2026-10-14 142722" src="https://github.com/user-attachments/assets/209380a2-e843-411f-b969-986aa64e910c" />
+<img width="634" height="293" alt="Screenshot 2026-10-14 142248" src="https://github.com/user-attachments/assets/92ad4177-8680-44af-9ceb-37cb3a9de8e3" />
+<img width="623" height="286" alt="Screenshot 2026-10-14 142317" src="https://github.com/user-attachments/assets/145d1d36-556b-445b-8c56-6bbc8e6c43cf" />
+<img width="626" height="288" alt="Screenshot 2026-10-14 142340" src="https://github.com/user-attachments/assets/d8fe26e9-de85-4bce-8404-3352e714f0e9" />
+<img width="631" height="290" alt="Screenshot 2026-10-14 142403" src="https://github.com/user-attachments/assets/952bcb33-22e1-4a9d-a016-322e3eb5c25b" />
 
----
 
-## 12. Future enhancements
 
-- Wire up a real web-search tool (Tavily/SerpAPI) in
-  `discovery_agent.web_search_stub` for live scholarship discovery, storing
-  results as `VERIFIED SOURCE` with retrieval date, merged alongside (never
-  silently replacing) the demo dataset.
-- Swap TF-IDF retrieval for a hosted embeddings model + FAISS/Chroma/pgvector
-  for larger, semantically richer knowledge bases.
-- Add authentication so students can save profiles and track applications
-  across sessions (schema already supports this via `students`/`applications`).
-- Turn the Orchestrator into an explicit LangGraph graph for visual
-  debugging of agent state transitions.
-- OCR-based document verification (upload a certificate, auto-check it
-  against the requirement).
-- SMS/email deadline reminders via the `deadlines` table.
+
+
+
