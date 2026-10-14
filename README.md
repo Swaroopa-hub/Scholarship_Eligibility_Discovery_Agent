@@ -239,7 +239,7 @@ similarity) is a natural next step -- see "Future enhancements."
 
 ## 6. Demo flow (exact hackathon script)
 
-1. Open the app → **Find My Scholarships**.
+1. Open the website → **Find My Scholarships**.
 2. On the Student Profile page, paste (already pre-filled as an example):
    > "I am a third-year B.Tech CSE student from Telangana. My CGPA is 8.7 and my family income is ₹3 lakh per year."
 3. Click **Run Scholarship Discovery**. Watch the **Agent Activity** panel on
