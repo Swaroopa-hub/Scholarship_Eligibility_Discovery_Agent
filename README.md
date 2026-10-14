@@ -1,4 +1,6 @@
-# ScholarAI — Personal Scholarship Discovery Agent
+# Scholarship_Eligibility_Discovery_Agent
+
+**ScholarAI — Personal Scholarship Discovery Agent**
 
 **PS-016 — Scholarship Eligibility Discovery Agent**
 
